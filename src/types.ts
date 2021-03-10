@@ -1,12 +1,16 @@
-type User = {
-  id: number;
+type UserRecord = {
+  id: string;
   email: string;
   password: string;
 };
 
 interface Authenticatable {
-  user(): User | null;
+  userId(): string;
   isAuthorized(): boolean;
 }
 
-export { User, Authenticatable };
+type GraphQLContext = {
+  user?: Authenticatable;
+};
+
+export { UserRecord, Authenticatable, GraphQLContext };
